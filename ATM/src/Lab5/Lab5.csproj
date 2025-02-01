@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <RootNamespace>Itmo.ObjectOrientedProgramming.Lab5</RootNamespace>
+    </PropertyGroup>
+    
+    <ItemGroup>
+      <PackageReference Include="DotNetEnv" />
+      <PackageReference Include="Itmo.Dev.Platform.Postgres" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        <PrivateAssets>all</PrivateAssets>
+      </PackageReference>
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+      <PackageReference Include="NSubstitute" />
+      <PackageReference Include="Spectre.Console" />
+      <PackageReference Include="Spectre.Console.Cli" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\Application\Lab5.Application.Abstractions\Lab5.Application.Abstractions.csproj" />
+      <ProjectReference Include="..\Application\Lab5.Application.Contracts\Lab5.Application.Contracts.csproj" />
+      <ProjectReference Include="..\Application\Lab5.Application.Models\Lab5.Application.Models.csproj" />
+      <ProjectReference Include="..\Application\Lab5.Application\Lab5.Application.csproj" />
+      <ProjectReference Include="..\Lab5.Infrastructure\Lab5.Infrastructure.csproj" />
+      <ProjectReference Include="..\Lab5.Presentation\Lab5.Presentation.csproj" />
+    </ItemGroup>
+
+</Project>

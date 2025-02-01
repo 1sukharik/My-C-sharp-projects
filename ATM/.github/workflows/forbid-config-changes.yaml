@@ -1,0 +1,40 @@
+name: Forbid config changes
+
+on:
+  push:
+    branches: [ "master" ]
+    paths:
+      - 'Directory.Build.props'
+      - 'Itmo.ObjectOrientedProgramming.sln.DotSettings'
+      - 'Itmo.ObjectOrientedProgramming.sln'
+      - '.github/workflows/*.yaml'
+      - '.editorconfig'
+
+  pull_request:
+    branches: [ "master" ]
+    paths:
+      - 'Directory.Build.props'
+      - 'Itmo.ObjectOrientedProgramming.sln.DotSettings'
+      - 'Itmo.ObjectOrientedProgramming.sln'
+      - '.github/workflows/*.yaml'
+      - '.editorconfig'
+
+jobs:
+  watcher:
+    name: Watch for config file changes
+    permissions:
+      pull-requests: write
+      id-token: write
+    runs-on: ubuntu-latest
+    if: github.repository != 'is-oop-y27/template' && github.actor != 'asap-itmo-bot[bot]'
+
+    steps:
+      - name: Post report to pull request
+        uses: mshick/add-pr-comment@v2
+        with:
+          refresh-message-position: true
+          message: |
+            Don't 1: Были внесены изменения в файлы конфигурации!
+
+      - name: Send error exit code
+        run: exit 1
